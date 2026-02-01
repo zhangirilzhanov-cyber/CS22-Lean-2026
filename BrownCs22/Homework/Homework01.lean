@@ -73,7 +73,13 @@ will be very helpful here!
 
 @[autograded 3]
 theorem problem_1 : (q ∧ p) ∧ (r ∧ q) → (r ∧ p) := by
-  sorry
+  assume hpqrq
+  eliminate hpqrq with pq rq
+eliminate pq with p q
+eliminate rq with r q 
+split_goal
+assumption
+assumption
   done
 
 
