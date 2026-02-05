@@ -31,10 +31,6 @@ Some general guidelines, before we get started.
   For example, suppose the original problem looks like this:
 -/
 
-theorem example_1 (p : Prop) : p → p → p := by
-  sorry
-  done
-
 /-
 
   Notice that, with the `sorry`, `example_1` is highlighted with a
