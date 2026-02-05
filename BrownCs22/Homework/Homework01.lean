@@ -105,7 +105,11 @@ Again, your task is to fill in the `sorry` below to prove this statement.
 
 @[autograded 3]
 theorem problem_2 : (p → q) → ¬ (p ∧ ¬ q) := by
-  sorry
+    assume hpq
+  assume h_qp
+  eliminate h_qp with hp hnq
+  have hq := hpq hp
+  eliminate hnq hq
   done
 
 
@@ -136,5 +140,14 @@ Your task: translate this argument to Lean.
 
 @[autograded 4]
 theorem problem_3 : ((p ∨ q) ∧ (p → r) ∧ (q → s)) → (r ∨ s) := by
-  sorry
+    assume h
+  eliminate h with hpq h_rest
+  eliminate h_rest with hpr hqs
+  eliminate hpq with hp hq
+  have hr := hpr hp
+  left
+  assumption
+  have hs := hqs hq
+  right
+  assumption
   done
