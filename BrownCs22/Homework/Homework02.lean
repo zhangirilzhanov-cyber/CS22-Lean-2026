@@ -74,7 +74,8 @@ Remember `ℕ = {0, 1, 2, ...}`, the natural numbers.
 
 @[autograded 2]
 theorem problem_1a : ∃ n : ℕ, ∀ x : ℕ, n ≤ x := by
-  sorry
+ existsi 0
+numbers
   done
 
 
@@ -87,7 +88,9 @@ What if we swap them? The proof game changes!
 
 @[autograded 2]
 theorem problem_1b : ∀ n : ℕ, ∃ x : ℕ, n ≤ x := by
-  sorry
+  fix n
+  existsi n
+  numbers
   done
 
 /-
@@ -131,7 +134,9 @@ First, practice an introduction:
 
 @[autograded 1]
 theorem problem_2 : 220 ∣ 880 := by
-  sorry
+  dsimp dvd
+  existsi 4
+  numbers
   done
 
 /-
@@ -143,7 +148,13 @@ is also a divisor of 220.
 
 @[autograded 3]
 theorem problem_3 : ∀ x : ℕ, x ∣ 22 → x ∣ 88 := by
-  sorry
+ fix x
+  assume hx22
+  dsimp dvd at hx22
+  eliminate hx22 with c hc
+  dsimp dvd
+  existsi c * 4
+  linarith
   done
 
 
@@ -179,7 +190,7 @@ No need to start with `assume`.
 
 @[autograded 3]
 theorem problem_4 (a b : ℤ) (h : ∀ x : ℤ, 2*a ≤ x ∨ x ≤ 2*b) : a ≤ b := by
-  sorry
+  /- idk -/
   done
 
 
